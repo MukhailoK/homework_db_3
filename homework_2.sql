@@ -35,3 +35,12 @@ SET
     ContactName=''
 WHERE
    NOT Country IN('China')
+
+SELECT
+	Products.ProductName,
+	COUNT(Orders.OrderID) AS count_orders
+FROM Orders
+JOIN Products ON Orders.ProductID = Products.ProductID
+GROUP BY Products.ProductID
+ORDER BY count_orders DESC
+LIMIT 3
